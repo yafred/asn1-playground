@@ -1,6 +1,10 @@
 
 FROM node:10
 
+#
+# Add our application
+#
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -13,13 +17,12 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
+# Bundle app source
+COPY . .
 
-
-
-
-
-
+#
 # Add openjdk (see https://github.com/docker-library/openjdk/tree/master/8/jdk)
+#
 
 RUN set -eux; \
 	apt-get update; \
@@ -128,12 +131,9 @@ RUN set -eux; \
 
 
 
-
-
-
-
-# Bundle app source
-COPY . .
+#
+# Start our application
+#
 
 # Expose Node Server port
 EXPOSE 3000

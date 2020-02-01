@@ -6,11 +6,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var random = require("random");
 
+var app = module.exports = express();
+
 var indexRouter = require('./routes/index');
 var compileRouter = require('./routes/compile');
 var convertRouter = require('./routes/convert');
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

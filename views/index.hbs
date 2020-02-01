@@ -13,13 +13,36 @@
   </div>
   
   <div class="large-4 columns">  
-    <h4>Console</h4>   
+    <h4>Console</h4>  
+    <div id="console">
+ Session ID: {{ sessionId }} <br/>
+ Hostname: {{ hostName }}
+    </div> 
   </div>
   
 </div>
 
 <script>
 $(document).ready(function(){
+
+	// if user is running mozilla then use it's built-in WebSocket
+	window.WebSocket = window.WebSocket || window.MozWebSocket;
+
+	var connection = new WebSocket('ws://{{ hostName }}');
+
+	connection.onopen = function () {
+		// connection is opened and ready to use
+		connection.send('{{ sessionId }}');
+	};
+
+	connection.onerror = function (error) {
+		// an error occurred when sending/receiving data
+	};
+
+	connection.onmessage = function (message) {
+		// each message is a line for the console
+		console.log(message.data);
+	};
 
  	$('#compile').click(function(event) {
 		event.preventDefault();

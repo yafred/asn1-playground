@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -14,6 +14,7 @@
     "hbs": "^4.1.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "random": "^2.0.12"
+    "random": "^2.0.12",
+    "websocket": "^1.0.31"
   }
 }

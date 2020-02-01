@@ -5,7 +5,7 @@ var debug = require('debug')('asn1-playground:index');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	debug('session: ' + req.session.id);
-	res.render('index', { title: 'Express' });
+	res.render('index', { sessionId: req.session.id, hostName: req.get('host') });
 });
 
 module.exports = router;

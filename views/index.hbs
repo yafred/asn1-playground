@@ -1,2 +1,58 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="row expanded">
+
+  <div class="large-4 columns">
+    <h4>Specification</h4>
+    <textarea rows="40" name="textareaname" cols="50" id="specification"></textarea>
+    <a href="#" class="button" id="compile">Compile</a>
+  </div>
+  
+  <div class="large-4 columns">
+    <h4>Data</h4>
+    <textarea rows="40" name="textareaname" cols="50" id="data"></textarea>
+    <a href="#" class="button" id="convert">Convert</a>
+  </div>
+  
+  <div class="large-4 columns">  
+    <h4>Console</h4>   
+  </div>
+  
+</div>
+
+<script>
+$(document).ready(function(){
+
+ 	$('#compile').click(function(event) {
+		event.preventDefault();
+		var specification = $.trim($("#specification").val());
+		if(specification) {
+			var postData = {
+				specification: specification
+			};
+			
+			$.post('/compile', postData, function(data) {
+			})
+			.fail(function( jqxhr, textStatus, error ) {
+			});
+		}
+    });
+
+
+ 	$('#convert').click(function(event) {
+		event.preventDefault();
+		var encodedData = $.trim($("#data").val());
+		if(encodedData) {
+			var postData = {
+				encodedData: encodedData
+			};
+			
+			$.post('/convert', postData, function(data) {
+			})
+			.fail(function( jqxhr, textStatus, error ) {
+			});
+		}
+    });
+        
+
+});
+
+</script>

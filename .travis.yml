@@ -4,6 +4,10 @@ dist: trusty
 
 if: branch = master
 
+before_script:
+ - echo "JAVA_HOME=/usr/local/openjdk-8" > .env
+ - echo "WORKING_DIR=/tmp" >> .env
+
 script:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
  - docker build -t asn1-playground .

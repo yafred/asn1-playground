@@ -10,7 +10,6 @@ before_script:
 
 script:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
- - docker build -t asn1-playground .
+ - docker build -t "$DOCKER_USERNAME"/asn1-playground .
  - docker images
- - docker tag asn1-playground "$DOCKER_USERNAME"/asn1-playground
  - docker push "$DOCKER_USERNAME"/asn1-playground

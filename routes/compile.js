@@ -11,7 +11,7 @@ router.post('/', function(req, res, next) {
 
 	wsConnection = app.get('webSocketConnections')[req.session.id];
 
-	asn1Compile = spawn('cmd', [process.env.JAVA_HOME + '/bin/java', '-version']);
+	asn1Compile = spawn(process.env.JAVA_HOME + '/bin/java', ['-version']);
 	
 	if(process.platform === 'win32') {
 		asn1Compile = spawn('cmd', ['/c', process.env.JAVA_HOME + '\\bin\\java.exe', '-version']);

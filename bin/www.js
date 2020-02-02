@@ -7,6 +7,38 @@ var app = require('../app');
 var debug = require('debug')('asn1-playground:server');
 var http = require('http');
 var webSocketServer = require('websocket').server;
+const fs = require("fs");
+const dotenv = require('dotenv');
+
+
+/**
+ * Check environment 
+ */
+dotenv.config();
+
+if('JAVA_HOME' in process.env) {
+	if (fs.existsSync(process.env.JAVA_HOME) === false) {
+		console.error(process.env.JAVA_HOME + ' does not exist');
+		process.exit(1);
+	}
+}
+else {
+	console.error('JAVA_HOME must be set');
+	process.exit(1);
+}
+if('WORKING_DIR' in process.env) {
+	if (fs.existsSync(process.env.WORKING_DIR) === false) {
+		console.warn(process.env.WORKING_DIR + ' does not exist');
+	}
+}
+else {
+	console.error('JAVA_HOME must be set');
+	process.exit(1);
+}
+
+debug('Platform is ' + process.platform);
+debug('JAVA_HOME is ' + process.env.JAVA_HOME);
+debug('WORKING_DIR is ' + process.env.WORKING_DIR);
 
 /**
  * Get port from environment and store in Express.

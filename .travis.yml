@@ -2,7 +2,7 @@ dist: trusty
 
 jobs:
   include:
-    if: branch = master
+    - if: branch = master
     - stage: build docker image
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

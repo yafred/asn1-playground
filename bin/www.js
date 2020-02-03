@@ -26,19 +26,32 @@ else {
 	console.error('JAVA_HOME must be set');
 	process.exit(1);
 }
+
+if('JAVA_TOOLS_DIR' in process.env) {
+	if (fs.existsSync(process.env.JAVA_TOOLS_DIR) === false) {
+		console.error(process.env.JAVA_TOOLS_DIR + ' does not exist');
+		process.exit(1);
+	}
+}
+else {
+	console.error('JAVA_TOOLS_DIR must be set');
+	process.exit(1);
+}
+
 if('WORKING_DIR' in process.env) {
 	if (fs.existsSync(process.env.WORKING_DIR) === false) {
 		console.warn(process.env.WORKING_DIR + ' does not exist');
 	}
 }
 else {
-	console.error('JAVA_HOME must be set');
+	console.error('WORKING_DIR must be set');
 	process.exit(1);
 }
 
 debug('Platform is ' + process.platform);
 debug('JAVA_HOME is ' + process.env.JAVA_HOME);
 debug('WORKING_DIR is ' + process.env.WORKING_DIR);
+debug('JAVA_TOOLS_DIR is ' + process.env.JAVA_TOOLS_DIR);
 
 /**
  * Get port from environment and store in Express.

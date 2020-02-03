@@ -11,10 +11,10 @@ router.post('/', function(req, res, next) {
 
 	wsConnection = app.get('webSocketConnections')[req.session.id];
 
-	asn1Compile = spawn(process.env.JAVA_HOME + '/bin/java', ['-version']);
+	asn1Compile = spawn(process.env.JAVA_HOME + '/bin/java', ['-jar', process.env.JAVA_TOOLS_DIR + '/asn1-compiler-with-google-java-format.jar']);
 	
 	if(process.platform === 'win32') {
-		asn1Compile = spawn('cmd', ['/c', process.env.JAVA_HOME + '\\bin\\java.exe', '-version']);
+		asn1Compile = spawn('cmd', ['/c', process.env.JAVA_HOME + '\\bin\\java.exe', '-jar', process.env.JAVA_TOOLS_DIR + '\\asn1-compiler-with-google-java-format.jar']);
 	}
 
 	asn1Compile.stdout.on('data', function(data) {

@@ -53,6 +53,8 @@ router.post('/', function(req, res, next) {
 		debug('Sending ' + JSON.stringify(consoleData).length + ' chars');
 		wsConnection.send(JSON.stringify(consoleData));
 	});
+	
+	res.send(); // send a response to avoid the 2 minutes retry from the browser
 });
 
 module.exports = router;

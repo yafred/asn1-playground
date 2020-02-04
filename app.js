@@ -1,16 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var session = require('express-session');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var random = require("random");
+const createError = require('http-errors');
+const express = require('express');
+const session = require('express-session');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const random = require("random");
 
-var app = module.exports = express();
+const app = module.exports = express();
 
-var indexRouter = require('./routes/index');
-var compileRouter = require('./routes/compile');
-var convertRouter = require('./routes/convert');
+const indexRouter = require('./routes/index');
+const validateRouter = require('./routes/validate');
+const compileRouter = require('./routes/compile');
+const convertRouter = require('./routes/convert');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({resave: true, saveUninitialized: true, secret: 'XCR3rsasa%RDHHH', cookie: { maxAge: 60000 }, cookie: { secure: false }}));
 
 app.use('/', indexRouter);
+app.use('/validate', validateRouter);
 app.use('/compile', compileRouter);
 app.use('/convert', convertRouter);
 

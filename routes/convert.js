@@ -1,7 +1,7 @@
-var app = require('../app');
-var express = require('express');
-var router = express.Router();
-var debug = require('debug')('asn1-playground:convert');
+const app = require('../app');
+const express = require('express');
+const router = express.Router();
+const debug = require('debug')('asn1-playground:convert');
 
 const { spawn } = require('child_process');
 

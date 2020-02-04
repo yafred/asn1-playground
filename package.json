@@ -16,6 +16,7 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "random": "^2.0.12",
+    "rimraf": "^3.0.1",
     "websocket": "^1.0.31"
   }
 }

@@ -3,10 +3,10 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('asn1-playground:server');
-var http = require('http');
-var webSocketServer = require('websocket').server;
+const app = require('../app');
+const debug = require('debug')('asn1-playground:server');
+const http = require('http');
+const webSocketServer = require('websocket').server;
 const fs = require("fs");
 const dotenv = require('dotenv');
 

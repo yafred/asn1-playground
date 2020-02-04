@@ -8,7 +8,6 @@ before_script:
  - echo "JAVA_HOME=/usr/local/openjdk-8" > .env
  - echo "WORKING_DIR=/tmp" >> .env
  - echo "JAVA_TOOLS_DIR=/usr/src/app" >> .env
- - echo "DEBUG=asn1-playground:*" >> .env
  - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.17/asn1-compiler-with-google-java-format.jar
  - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.17/asn1-runtime.jar
  - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.17/asn1-converter.jar

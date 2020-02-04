@@ -22,7 +22,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({resave: true, saveUninitialized: true, secret: 'XCR3rsasa%RDHHH', cookie: { maxAge: 60000 }}));
+// Note: cookie: { secure: false } prevents session id to change when using http
+app.use(session({resave: true, saveUninitialized: true, secret: 'XCR3rsasa%RDHHH', cookie: { maxAge: 60000 }, cookie: { secure: false }}));
 
 app.use('/', indexRouter);
 app.use('/compile', compileRouter);

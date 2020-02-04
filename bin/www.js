@@ -92,7 +92,7 @@ wsServer.on('request', function(request) {
 	});
 
 	connection.on('close', function(connection) {
-		// close user connection
+		debug('Client closed a socket connection');
 	});
 });
 

@@ -30,10 +30,18 @@ router.post('/', function(req, res, next) {
 	wsConnection = app.get('webSocketConnections')[req.session.id];
 
 	function compileJavaClasses() {
+		var args =  ['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-runtime.jar'];
+			
 		var packageName = fs.readdirSync(sessionPath)[0];
 		
+		// build an array of files 
+		var srcFiles = fs.readdirSync(sessionPath + '/' + packageName);
+		for (var i=0; i < srcFiles.length; i++) {
+			args.push(sessionPath + '/' + packageName + '/' + srcFiles[i]);
+		}
+		
 		// spawn process
-		compileCmd = spawn(process.env.JAVA_HOME + '/bin/javac', ['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-runtime.jar', sessionPath + '/' + packageName + '/*.java']);
+		compileCmd = spawn(process.env.JAVA_HOME + '/bin/javac', args);
 		
 		compileCmd.stdout.on('data', function(data) {
 			lines = data.toString().match(/[^\r\n]+/g);

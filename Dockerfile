@@ -138,4 +138,4 @@ RUN set -eux; \
 # Expose Node Server port
 EXPOSE 3000
 
-CMD [ "node", "bin/www" ]
+CMD [ "npm", "start" ]

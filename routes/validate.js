@@ -4,6 +4,8 @@ const router = express.Router();
 const debug = require('debug')('asn1-playground:validate');
 const fs = require('fs');
 const { spawn } = require('child_process');
+// https://tc39.es/ecma262/#sec-destructuring-assignment
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring
 
 router.post('/', function(req, res, next) {
 	
@@ -14,14 +16,14 @@ router.post('/', function(req, res, next) {
 	}
 
 	// create the input file is WORKING_DIR
-	const sessionPath = process.env.WORKING_DIR + '/' + req.session.id + '.asn';
-	debug(sessionPath);
-	fs.writeFile(sessionPath, req.body.specification, function (err) {
+	const specificationPath = process.env.WORKING_DIR + '/' + req.session.id + '.asn';
+	debug(specificationPath);
+	fs.writeFile(specificationPath, req.body.specification, function (err) {
 		  if(err) debug(err);
 		});
 
 	// spawn process
-	validateCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-jar', process.env.JAVA_TOOLS_DIR + '/asn1-compiler-with-google-java-format.jar', '-f', sessionPath, '-p']);
+	validateCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-jar', process.env.JAVA_TOOLS_DIR + '/asn1-compiler-with-google-java-format.jar', '-f', specificationPath, '-p']);
 	
 	// send result to client via websocket
 	wsConnection = app.get('webSocketConnections')[req.session.id];

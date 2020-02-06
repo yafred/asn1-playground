@@ -1,8 +1,8 @@
 # ASN.1 Playground
 
-Web front-end (Node.js) and docker image to play with https://github.com/yafred/asn1-playground
+Web front-end (Node.js) and docker image to play with https://github.com/yafred/asn1-tool
 
-[![Build Status](https://travis-ci.org/yafred/asn1-tool.svg?branch=master)](https://travis-ci.org/yafred/asn1-tool)
+[![Build Status](https://travis-ci.org/yafred/asn1-playground.svg?branch=master)](https://travis-ci.org/yafred/asn1-playground)
 
 ## Using the node application
 

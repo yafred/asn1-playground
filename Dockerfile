@@ -134,6 +134,7 @@ RUN set -eux; \
 #
 # Start our application
 #
+ENV DEBUG asn1-playground:*
 
 # Expose Node Server port
 EXPOSE 3000

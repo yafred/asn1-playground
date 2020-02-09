@@ -23,7 +23,9 @@ router.post('/', function(req, res, next) {
 		});
 
 	// spawn process
-	convertCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-converter.jar;' + process.env.WORKING_DIR + '/' + req.session.id, 'com.yafred.asn1.tool.Converter']);
+	cpSeparator = ':';
+	if(process.platform == 'win32') cpSeparator = ';';
+	convertCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-converter.jar' + cpSeparator + process.env.WORKING_DIR + '/' + req.session.id, 'com.yafred.asn1.tool.Converter']);
 	
 	// send result to client via websocket
 	wsConnection = app.get('webSocketConnections')[req.session.id];

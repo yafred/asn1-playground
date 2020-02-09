@@ -32,6 +32,7 @@ router.post('/', function(req, res, next) {
 		var consoleData = new Object();
 		consoleData.type = 'stdout';
 		dataString = data.toString();
+		debug(dataString + '|');
 		lastChar = dataString.charAt(dataString.length-1);
 		if(lastChar == '\n' || lastChar == '\r') {
 			consoleData.eol = true;
@@ -45,6 +46,7 @@ router.post('/', function(req, res, next) {
 		var consoleData = new Object();
 		consoleData.type = 'stderr';
 		dataString = data.toString();
+		debug(dataString + '|');
 		lastChar = dataString.charAt(dataString.length-1);
 		if(lastChar == '\n' || lastChar == '\r') {
 			consoleData.eol = true;

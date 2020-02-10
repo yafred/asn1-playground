@@ -2,7 +2,7 @@ language: node_js
 
 dist: trusty
 
-if: branch = master AND tag IS present
+if: tag IS present
 
 before_script:
  - echo "JAVA_HOME=/usr/local/openjdk-8" > .env

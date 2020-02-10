@@ -25,8 +25,18 @@ router.post('/', function(req, res, next) {
 	// spawn process
 	cpSeparator = ':';
 	if(process.platform == 'win32') cpSeparator = ';';
-	convertCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-converter.jar' + cpSeparator + process.env.WORKING_DIR + '/' + req.session.id, 'com.yafred.asn1.tool.Converter']);
-	
+	convertCmd = spawn(process.env.JAVA_HOME + '/bin/java', 
+	['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-converter.jar' + cpSeparator + process.env.WORKING_DIR + '/' + req.session.id, 
+	'com.yafred.asn1.tool.Converter',
+	'-dec', 'ASN',
+	'-enc', 'BER',
+	'-c', req.body.className,
+	'-i', encodedDataPath
+	]);
+
+	// send a response to avoid the 2 minutes retry from the browser
+	res.send();
+
 	// send result to client via websocket
 	wsConnection = app.get('webSocketConnections')[req.session.id];
 	
@@ -57,7 +67,6 @@ router.post('/', function(req, res, next) {
 		wsConnection.send(JSON.stringify(consoleData));
 	});
 	
-	res.send(); // send a response to avoid the 2 minutes retry from the browser
 });
 
 module.exports = router;

@@ -25,6 +25,9 @@ router.post('/', function(req, res, next) {
 	// spawn process
 	validateCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-jar', process.env.JAVA_TOOLS_DIR + '/asn1-compiler-with-google-java-format.jar', '-f', specificationPath, '-p']);
 	
+	// send a response to avoid the 2 minutes retry from the browser
+	res.send();
+
 	// send result to client via websocket
 	wsConnection = app.get('webSocketConnections')[req.session.id];
 	
@@ -65,7 +68,6 @@ router.post('/', function(req, res, next) {
 		wsConnection.send(JSON.stringify(consoleData));
 	});
 	
-	res.send(); // send a response to avoid the 2 minutes retry from the browser
 });
 
 module.exports = router;

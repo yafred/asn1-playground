@@ -58,7 +58,6 @@ router.post('/', function (req, res, next) {
 
 		consoleData.type = 'stdout';
 		consoleData.lines = ["Java source generated ..."];
-		consoleData.eol = true;
 		debug('Sending ' + JSON.stringify(consoleData).length + ' chars');
 		wsConnection.send(JSON.stringify(consoleData));
 
@@ -105,19 +104,18 @@ router.post('/', function (req, res, next) {
 
 		compileCmd.on('exit', function (code) {
 			var consoleData = new Object();
-
 			consoleData.type = 'stdout';
 			consoleData.lines = ["Java classes compiled ..."];
-			consoleData.eol = true;
 			debug('Sending ' + JSON.stringify(consoleData).length + ' chars');
 			wsConnection.send(JSON.stringify(consoleData));
 
+			consoleData = new Object();
 			consoleData.type = 'map';
 			consoleData.content = fs.readFileSync(sessionPath + '/asn1-java.map', 'utf8');
 			debug('Sending ' + JSON.stringify(consoleData).length + ' chars');
 			wsConnection.send(JSON.stringify(consoleData));
 
-
+			consoleData = new Object();
 			consoleData.type = 'exit';
 			consoleData.command = 'compile';
 			consoleData.code = code.toString();

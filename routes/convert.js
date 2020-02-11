@@ -41,19 +41,17 @@ router.post('/', function(req, res, next) {
 	wsConnection = app.get('webSocketConnections')[req.session.id];
 	
 	convertCmd.stdout.on('data', function(data) {
-		lines = data.toString().match(/[^\r\n]+/g);
 		var consoleData = new Object();
 		consoleData.type = 'stdout';
-		consoleData.lines = lines;
+		consoleData.lines = data.toString().match(/[^\r\n]+/g);
 		debug('Sending ' + JSON.stringify(consoleData).length + ' chars');
 		wsConnection.send(JSON.stringify(consoleData));
 	});
 
 	convertCmd.stderr.on('data', function(data) {
-		lines = data.toString().match(/[^\r\n]+/g);
 		var consoleData = new Object();
 		consoleData.type = 'stderr';
-		consoleData.lines = lines;
+		consoleData.lines = data.toString().match(/[^\r\n]+/g);
 		debug('Sending ' + JSON.stringify(consoleData).length + ' chars');
 		wsConnection.send(JSON.stringify(consoleData));
 	});

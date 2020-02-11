@@ -55,10 +55,7 @@ $(document).ready(function(){
 						return '&#'+i.charCodeAt(0)+';';
 					});
 				line = line.replace(/ /g,"&nbsp;")
-				$("#console").append(line);
-				if((index < consoleData.lines.length-1) || consoleData.eol) { // sometime we don't have eol at the end of last line
-					$("#console").append('<br/>');
-				}
+				$("#console").append(line + '<br/>');
 			});
 		}
 		if(consoleData.type === 'exit') {

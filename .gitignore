@@ -105,3 +105,8 @@ dist
 
 # Eclipse
 /.project
+
+# asn1-tool
+asn1-runtime.jar
+asn1-compiler-with-google-java-format.jar
+asn1-converter.jar

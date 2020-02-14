@@ -10,7 +10,11 @@
   <div class="large-4 columns">
     <h4>Data</h4>
 	<select id="types" /> 
-    <textarea rows="20" cols="30" id="data" style="font-family: monospace"></textarea>
+    <input type="radio" name="decode" value="ASN" checked>&nbsp;ASN.1 Value&nbsp;
+    <input type="radio" name="decode" value="BER">&nbsp;BER&nbsp;&nbsp;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&nbsp;
+    <input type="radio" name="encode" value="ASN">&nbsp;ASN.1 Value&nbsp;
+    <input type="radio" name="encode" value="BER" checked>&nbsp;BER&nbsp;
+   <textarea rows="20" cols="30" id="data" style="font-family: monospace"></textarea>
     <a href="#" class="button" id="convert">Convert</a>
   </div>
   
@@ -119,7 +123,9 @@ $(document).ready(function(){
 		if(encodedData) {
 			var postData = {
 				encodedData: encodedData,
-				className: $("#types").val()
+				className: $("#types").val(),
+				decode: $("input:radio[name ='decode']:checked").val(),
+				encode: $("input:radio[name ='encode']:checked").val()
 			};
 			
 			$.post('/convert', postData, function(data) {

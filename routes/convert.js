@@ -28,8 +28,8 @@ router.post('/', function(req, res, next) {
 	convertCmd = spawn(process.env.JAVA_HOME + '/bin/java', 
 	['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-converter.jar' + cpSeparator + process.env.WORKING_DIR + '/' + req.session.id, 
 	'com.yafred.asn1.tool.Converter',
-	'-dec', 'ASN',
-	'-enc', 'BER',
+	'-dec', req.body.decode,
+	'-enc', req.body.encode,
 	'-c', req.body.className,
 	'-i', encodedDataPath
 	]);

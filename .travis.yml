@@ -8,9 +8,9 @@ before_script:
  - echo "JAVA_HOME=/usr/local/openjdk-8" > .env
  - echo "WORKING_DIR=/tmp" >> .env
  - echo "JAVA_TOOLS_DIR=/usr/src/app" >> .env
- - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.19/asn1-compiler-with-google-java-format.jar
- - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.19/asn1-runtime.jar
- - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.19/asn1-converter.jar
+ - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.20/asn1-compiler-with-google-java-format.jar
+ - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.20/asn1-runtime.jar
+ - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.20/asn1-converter.jar
 
 script:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

@@ -4,6 +4,13 @@ Web front-end (Node.js) and docker image to play with https://github.com/yafred/
 
 [![Build Status](https://travis-ci.org/yafred/asn1-playground.svg?branch=master)](https://travis-ci.org/yafred/asn1-playground)
 
+
+## Using the docker image
+
+```
+docker run -p 3000:3000 yafred/asn1-playground
+```
+
 ## Using the node application
 
   * Install a Java 8 JDK (we need java and javac)
@@ -23,11 +30,4 @@ ASN1_RUNTIME_JAR=< where asn1-tool runtime is downloaded >
  
 ```
 npm start
-```
-  
-
-## Using the docker image
-
-```
-docker run -p 3000:3000 yafred/asn1-playground
 ```

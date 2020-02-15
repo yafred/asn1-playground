@@ -27,14 +27,36 @@ else {
 	process.exit(1);
 }
 
-if('JAVA_TOOLS_DIR' in process.env) {
-	if (fs.existsSync(process.env.JAVA_TOOLS_DIR) === false) {
-		console.error(process.env.JAVA_TOOLS_DIR + ' does not exist');
+if('ASN1_COMPILER_JAR' in process.env) {
+	if (fs.existsSync(process.env.ASN1_COMPILER_JAR) === false) {
+		console.error(process.env.ASN1_COMPILER_JAR + ' does not exist');
 		process.exit(1);
 	}
 }
 else {
-	console.error('JAVA_TOOLS_DIR must be set');
+	console.error('ASN1_COMPILER_JAR must be set');
+	process.exit(1);
+}
+
+if('ASN1_CONVERTER_JAR' in process.env) {
+	if (fs.existsSync(process.env.ASN1_CONVERTER_JAR) === false) {
+		console.error(process.env.ASN1_CONVERTER_JAR + ' does not exist');
+		process.exit(1);
+	}
+}
+else {
+	console.error('ASN1_CONVERTER_JAR must be set');
+	process.exit(1);
+}
+
+if('ASN1_RUNTIME_JAR' in process.env) {
+	if (fs.existsSync(process.env.ASN1_RUNTIME_JAR) === false) {
+		console.error(process.env.ASN1_RUNTIME_JAR + ' does not exist');
+		process.exit(1);
+	}
+}
+else {
+	console.error('ASN1_RUNTIME_JAR must be set');
 	process.exit(1);
 }
 
@@ -51,7 +73,10 @@ else {
 debug('Platform is ' + process.platform);
 debug('JAVA_HOME is ' + process.env.JAVA_HOME);
 debug('WORKING_DIR is ' + process.env.WORKING_DIR);
-debug('JAVA_TOOLS_DIR is ' + process.env.JAVA_TOOLS_DIR);
+debug('ASN1_COMPILER_JAR is ' + process.env.ASN1_COMPILER_JAR);
+debug('ASN1_CONVERTER_JAR is ' + process.env.ASN1_CONVERTER_JAR);
+debug('ASN1_RUNTIME_JAR is ' + process.env.ASN1_RUNTIME_JAR);
+
 
 /**
  * Get port from environment and store in Express.

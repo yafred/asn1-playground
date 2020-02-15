@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
 	cpSeparator = ':';
 	if(process.platform == 'win32') cpSeparator = ';';
 	convertCmd = spawn(process.env.JAVA_HOME + '/bin/java', 
-	['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-converter.jar' + cpSeparator + process.env.WORKING_DIR + '/' + req.session.id, 
+	['-cp', process.env.ASN1_CONVERTER_JAR + cpSeparator + process.env.WORKING_DIR + '/' + req.session.id, 
 	'com.yafred.asn1.tool.Converter',
 	'-dec', req.body.decode,
 	'-enc', req.body.encode,

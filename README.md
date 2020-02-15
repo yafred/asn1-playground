@@ -14,7 +14,9 @@ Web front-end (Node.js) and docker image to play with https://github.com/yafred/
 ```
 JAVA_HOME=< where your Java JDK is installed>
 WORKING_DIR=< where this application can create some files>
-JAVA_TOOLS_DIR=< where asn1-tool jars are downloaded >
+ASN1_COMPILER_JAR=< where asn1-tool compiler is downloaded >
+ASN1_COVERTER_JAR=< where asn1-tool converter is downloaded >
+ASN1_RUNTIME_JAR=< where asn1-tool runtime is downloaded >
 ``` 
 
   * Start application 

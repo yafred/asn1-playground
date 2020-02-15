@@ -4,14 +4,19 @@ dist: trusty
 
 if: tag IS present
 
+env:
+- TOOL_VERSION=v0.0.21
+
 before_script:
  - echo "JAVA_HOME=/usr/local/openjdk-8" > .env
  - echo "WORKING_DIR=/tmp" >> .env
- - echo "JAVA_TOOLS_DIR=/usr/src/app" >> .env
- - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.20/asn1-compiler-with-google-java-format.jar
- - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.20/asn1-runtime.jar
- - wget https://github.com/yafred/asn1-tool/releases/download/v0.0.20/asn1-converter.jar
-
+ - echo "ASN1_COMPILER_JAR=/usr/src/app/asn1-compiler-with-google-java-format.jar" >> .env
+ - echo "ASN1_CONVERTER_JAR=/usr/src/app/asn1-converter.jar" >> .env
+ - echo "ASN1_RUNTIME_JAR=/usr/src/app/asn1-runtime.jar" >> .env
+ - wget https://github.com/yafred/asn1-tool/releases/download/$TOOL_VERSION/asn1-compiler-with-google-java-format.jar
+ - wget https://github.com/yafred/asn1-tool/releases/download/$TOOL_VERSION/asn1-converter.jar
+ - wget https://github.com/yafred/asn1-tool/releases/download/$TOOL_VERSION/asn1-runtime.jar
+ 
 script:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
  - docker build -t "$DOCKER_USERNAME"/asn1-playground .

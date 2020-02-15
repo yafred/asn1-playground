@@ -27,7 +27,7 @@ router.post('/', function (req, res, next) {
 
 
 	// spawn process
-	generateCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-jar', process.env.JAVA_TOOLS_DIR + '/asn1-compiler-with-google-java-format.jar', '-f', sessionPath + '.asn', '-jo', sessionPath]);
+	generateCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-jar', process.env.ASN1_COMPILER_JAR, '-f', sessionPath + '.asn', '-jo', sessionPath]);
 
 	// send a response to avoid the 2 minutes retry from the browser
 	res.send();
@@ -65,7 +65,7 @@ router.post('/', function (req, res, next) {
 	});
 
 	function compileJavaClasses() {
-		var args = ['-cp', process.env.JAVA_TOOLS_DIR + '/asn1-runtime.jar'];
+		var args = ['-cp', process.env.ASN1_RUNTIME_JAR];
 
 		var dirEntries = fs.readdirSync(sessionPath, { withFileTypes : true });
 		var packageName = '';

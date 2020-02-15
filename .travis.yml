@@ -5,7 +5,7 @@ dist: trusty
 if: tag IS present
 
 env:
-- TOOL_VERSION=v0.0.21
+- TOOL_VERSION=v0.0.22
 
 before_script:
  - echo "JAVA_HOME=/usr/local/openjdk-8" > .env

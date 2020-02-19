@@ -4,8 +4,9 @@
     <h4>Specification</h4>
     <textarea rows="20" cols="30" id="specification" style="font-family: monospace"></textarea>
     <a href="#" class="button" id="validate">Validate</a>
-    <a href="#" class="button" id="compile">Compile</a>
-  </div>
+    <a href="#" class="button disabled" id="compile">Compile</a>
+    <a href="/download" class="button disabled" id="download" target='_blank' download>Download</a>
+ </div>
   
   <div class="large-4 columns">
     <h4>Data</h4>
@@ -15,7 +16,7 @@
     <input type="radio" name="encode" value="ASN">&nbsp;ASN.1 Value&nbsp;
     <input type="radio" name="encode" value="BER" checked>&nbsp;BER&nbsp;
    <textarea rows="20" cols="30" id="data" style="font-family: monospace"></textarea>
-    <a href="#" class="button" id="convert">Convert</a>
+    <a href="#" class="button disabled" id="convert">Convert</a>
   </div>
   
   <div class="large-4 columns">  
@@ -65,7 +66,10 @@ $(document).ready(function(){
 		if(consoleData.type === 'exit') {
 			$('#validate').removeClass("disabled");
 			$('#compile').removeClass("disabled");
-			$('#convert').removeClass("disabled");
+			if(consoleData.command === 'compile') {
+				$('#convert').removeClass("disabled");
+				$('#download').removeClass("disabled");
+			}			
 		}	
 		if(consoleData.type == 'map') {
 			var map = JSON.parse(consoleData.content);
@@ -75,15 +79,12 @@ $(document).ready(function(){
 		}	
 	};
 
-
 	//
-	// Buttons
+	// Events
 	//
  	$('#validate').click(function(event) {
 		event.preventDefault();
-		$("#console").empty();
-		$('#validate').addClass("disabled");
-		$('#compile').addClass("disabled");
+		postingCommand();
 		var specification = $.trim($("#specification").val());
 		if(specification) {
 			var postData = {
@@ -99,9 +100,7 @@ $(document).ready(function(){
 
  	$('#compile').click(function(event) {
 		event.preventDefault();
-		$("#console").empty();
-		$('#validate').addClass("disabled");
-		$('#compile').addClass("disabled");
+		postingCommand();
 		var specification = $.trim($("#specification").val());
 		if(specification) {
 			var postData = {
@@ -117,8 +116,7 @@ $(document).ready(function(){
 
  	$('#convert').click(function(event) {
 		event.preventDefault();
-		$("#console").empty();
-		$('#convert').addClass("disabled");
+		postingCommand();
 		var encodedData = $.trim($("#data").val());
 		if(encodedData) {
 			var postData = {
@@ -134,7 +132,20 @@ $(document).ready(function(){
 			});
 		}
     });
-        
+
+	$('#specification').bind('input propertychange', function() {
+		$('#compile').addClass("disabled");
+		$('#download').addClass("disabled");
+		$('#convert').addClass("disabled");
+	});
+
+	function postingCommand() {
+		$("#console").empty();
+		$('#validate').addClass("disabled");
+		$('#compile').addClass("disabled");
+		$('#download').addClass("disabled");
+		$('#convert').addClass("disabled");
+	}
 
 });
 

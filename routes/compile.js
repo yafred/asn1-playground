@@ -143,7 +143,7 @@ router.post('/', function (req, res, next) {
 		// It is not part of this library but rather from the NodeJS Stream API.
 		// @see: https://nodejs.org/api/stream.html#stream_event_end
 		output.on('end', function () {
-			debug('Data has been drained');
+			debug('data source drained');
 		});
 
 		// good practice to catch warnings (ie stat failures and other non-blocking errors)

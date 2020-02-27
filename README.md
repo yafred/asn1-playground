@@ -7,9 +7,13 @@ Web front-end (Node.js) and docker image to play with https://github.com/yafred/
 
 ## Using the docker image
 
+  * Pull and start image 
+  
 ```
 docker run -p 3000:3000 yafred/asn1-playground
 ```
+
+  * Access web application with your browser on port 3000 
 
 ## Using the node application
 
@@ -31,3 +35,5 @@ ASN1_RUNTIME_JAR=< where asn1-tool runtime is downloaded >
 ```
 npm start
 ```
+
+  * Access web application with your browser on port 3000 

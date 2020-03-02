@@ -28,7 +28,7 @@ router.post('/', function (req, res, next) {
 
 
 	// spawn process
-	generateCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-jar', process.env.ASN1_COMPILER_JAR, '-f', sessionPath + '.asn', '-jo', sessionPath]);
+	generateCmd = spawn(process.env.JAVA_HOME + '/bin/java', ['-jar', process.env.ASN1_COMPILER_JAR, '-f', sessionPath + '.asn', '-jb', '-jo', sessionPath]);
 
 	// send a response to avoid the 2 minutes retry from the browser
 	res.send();

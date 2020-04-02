@@ -84,6 +84,7 @@ $(document).ready(function(){
 	//
  	$('#validate').click(function(event) {
 		event.preventDefault();
+		$("#types").empty();
 		postingCommand();
 		var specification = $.trim($("#specification").val());
 		if(specification) {
@@ -100,6 +101,7 @@ $(document).ready(function(){
 
  	$('#compile').click(function(event) {
 		event.preventDefault();
+		$("#types").empty();
 		postingCommand();
 		var specification = $.trim($("#specification").val());
 		if(specification) {

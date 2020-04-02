@@ -76,7 +76,7 @@ debug('WORKING_DIR is ' + process.env.WORKING_DIR);
 debug('ASN1_COMPILER_JAR is ' + process.env.ASN1_COMPILER_JAR);
 debug('ASN1_CONVERTER_JAR is ' + process.env.ASN1_CONVERTER_JAR);
 debug('ASN1_RUNTIME_JAR is ' + process.env.ASN1_RUNTIME_JAR);
-
+debug('VERSION is ' + process.env.VERSION);
 
 /**
  * Get port from environment and store in Express.

@@ -13,6 +13,7 @@ const validateRouter = require('./routes/validate');
 const compileRouter = require('./routes/compile');
 const convertRouter = require('./routes/convert');
 const downloadRouter = require('./routes/download');
+const infoRouter = require('./routes/info');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +33,7 @@ app.use('/validate', validateRouter);
 app.use('/compile', compileRouter);
 app.use('/convert', convertRouter);
 app.use('/download', downloadRouter);
+app.use('/info', infoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

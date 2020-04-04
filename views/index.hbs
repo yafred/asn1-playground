@@ -2,7 +2,19 @@
 
   <div class="large-4 columns">
     <h4>Specification</h4>
-    <textarea rows="20" cols="30" id="specification" style="font-family: monospace"></textarea>
+    <textarea rows="20" cols="30" id="specification" style="font-family: monospace">
+Example DEFINITIONS AUTOMATIC TAGS ::= 
+BEGIN 
+
+Flight ::= SEQUENCE {
+   origin             IA5String,
+   destination        IA5String,
+   seats  INTEGER,
+   crew-format ENUMERATED { six, eight, ten }
+}
+
+END		
+	</textarea>
     <a href="#" class="button" id="validate">Validate</a>
     <a href="#" class="button disabled" id="compile">Compile</a>
     <a href="/download" class="button disabled" id="download" target='_blank' download>Download</a>
@@ -15,15 +27,25 @@
     <input type="radio" name="decode" value="BER">&nbsp;BER&nbsp;&nbsp;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&nbsp;
     <input type="radio" name="encode" value="ASN">&nbsp;ASN.1 Value&nbsp;
     <input type="radio" name="encode" value="BER" checked>&nbsp;BER&nbsp;
-   <textarea rows="20" cols="30" id="data" style="font-family: monospace"></textarea>
+   <textarea rows="20" cols="30" id="data" style="font-family: monospace">
+{
+  origin "Paris",
+  destination "London",
+  seats 250,
+  crew-format ten
+}	   
+   </textarea>
     <a href="#" class="button disabled" id="convert">Convert</a>
   </div>
   
   <div class="large-4 columns">  
     <h4>Console</h4>  
     <div id="console" style="font-family: monospace; height: 500px; overflow: auto;">
-		Console version: {{ version }}<br/>
-    </div> 
+<h5><a href="https://github.com/yafred/asn1-tool">yafred/asn1-tool</a> version: {{ version }}</h5>
+1.Validate specification<br/>
+2.Compile specification<br/>
+3.Convert data<br/>
+   </div> 
   </div>
   
 </div>
@@ -39,11 +61,6 @@ $(document).ready(function(){
 	connection.onopen = function () {
 		// connection is opened and ready to use
 		connection.send('{{ sessionId }}');
-
-		$.post('/info', function(data) {
-		})
-		.fail(function( jqxhr, textStatus, error ) {
-		});
 	};
 
 	connection.onerror = function (error) {

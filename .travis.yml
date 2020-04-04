@@ -5,7 +5,7 @@ dist: trusty
 if: tag IS present
 
 env:
-- TOOL_VERSION=v0.0.24
+- TOOL_VERSION=$TRAVIS_TAG
 
 before_script:
  - echo "JAVA_HOME=/usr/local/openjdk-8" > .env
@@ -21,5 +21,7 @@ before_script:
 script:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
  - docker build -t "$DOCKER_USERNAME"/asn1-playground .
+ - docker tag "$DOCKER_USERNAME"/asn1-playground "$DOCKER_USERNAME"/asn1-playground:$TRAVIS_TAG
  - docker images
  - docker push "$DOCKER_USERNAME"/asn1-playground
+ - docker push "$DOCKER_USERNAME"/asn1-playground:$TRAVIS_TAG

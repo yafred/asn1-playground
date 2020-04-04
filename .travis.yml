@@ -21,7 +21,7 @@ before_script:
 script:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
  - docker build -t "$DOCKER_USERNAME"/asn1-playground .
- - docker tag "$DOCKER_USERNAME"/asn1-playground "$DOCKER_USERNAME"/asn1-playground:$TRAVIS_TAG
+ - docker tag "$DOCKER_USERNAME"/asn1-playground "$DOCKER_USERNAME"/asn1-playground:"$TRAVIS_TAG"
  - docker images
  - docker push "$DOCKER_USERNAME"/asn1-playground
- - docker push "$DOCKER_USERNAME"/asn1-playground:$TRAVIS_TAG
+ - docker push "$DOCKER_USERNAME"/asn1-playground:"$TRAVIS_TAG"

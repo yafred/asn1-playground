@@ -17,7 +17,7 @@ docker run -p 3000:3000 yafred/asn1-playground
 
 ## Using the node application
 
-  * Install a Java 8 JDK (we need java and javac)
+  * Install a Java 8+ JDK (we need java and javac)
   * Download the jars from [last asn1-tool release](https://github.com/yafred/asn1-tool/releases) 
   * Clone this repository
   * Create a .env file and set following properties

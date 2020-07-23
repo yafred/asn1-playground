@@ -30,6 +30,12 @@ ASN1_COVERTER_JAR=< where asn1-tool converter is downloaded >
 ASN1_RUNTIME_JAR=< where asn1-tool runtime is downloaded >
 ``` 
 
+  * Verbose 
+
+```
+set DEBUG=asn1-playground:*
+```
+
   * Start application 
  
 ```

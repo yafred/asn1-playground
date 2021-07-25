@@ -26,7 +26,7 @@ docker run -p 3000:3000 yafred/asn1-playground
 JAVA_HOME=< where your Java JDK is installed>
 WORKING_DIR=< where this application can create some files>
 ASN1_COMPILER_JAR=< where asn1-tool compiler is downloaded >
-ASN1_COVERTER_JAR=< where asn1-tool converter is downloaded >
+ASN1_CONVERTER_JAR=< where asn1-tool converter is downloaded >
 ASN1_RUNTIME_JAR=< where asn1-tool runtime is downloaded >
 ``` 
 
@@ -34,6 +34,12 @@ ASN1_RUNTIME_JAR=< where asn1-tool runtime is downloaded >
 
 ```
 set DEBUG=asn1-playground:*
+```
+
+  * Download dependencies 
+ 
+```
+npm install
 ```
 
   * Start application 

@@ -10,9 +10,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+      - 
+        name: Checkout the repository
+        uses: actions/checkout@v2
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -22,9 +22,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - 
-        name: Checkout the repository
-        uses: actions/checkout@v2
       - 
         name: Get artifacts
         run: |

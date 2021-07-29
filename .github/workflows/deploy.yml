@@ -25,7 +25,8 @@ jobs:
       - 
         name: Get artifacts
         run: |
-          pwd
+          mkdir downloads
+          cd downloads
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-compiler-with-google-java-format.jar
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-converter.jar
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-runtime.jar
@@ -33,6 +34,7 @@ jobs:
       - 
         name: Create .env 
         run: |
+          pwd
           echo "JAVA_HOME=/usr/lib/jvm/default-java/" > .env
           echo "WORKING_DIR=/tmp" >> .env
           echo "ASN1_COMPILER_JAR=/usr/src/app/asn1-compiler-with-google-java-format.jar" >> .env
@@ -46,6 +48,8 @@ jobs:
         with:
           push: true
           tags: yafred/asn1-playground:test
+          cache-from: type=local,src=downloads
+
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

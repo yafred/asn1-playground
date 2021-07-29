@@ -23,18 +23,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - 
+        name: Checkout the repository
+        uses: actions/checkout@v2
+      - 
         name: Get artifacts
         run: |
-          mkdir downloads
-          cd downloads
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-compiler-with-google-java-format.jar
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-converter.jar
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-runtime.jar
-          ls -l
       - 
         name: Create .env 
         run: |
-          cd downloads
           echo "JAVA_HOME=/usr/lib/jvm/default-java/" > .env
           echo "WORKING_DIR=/tmp" >> .env
           echo "ASN1_COMPILER_JAR=/usr/src/app/asn1-compiler-with-google-java-format.jar" >> .env
@@ -48,7 +47,6 @@ jobs:
         with:
           push: true
           tags: yafred/asn1-playground:test
-          cache-from: type=local,src=downloads
 
       -
         name: Image digest

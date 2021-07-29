@@ -36,7 +36,7 @@ jobs:
       -
         name: Build
         run: |
-          docker build -t yafred/asn1-playground:test .
+          docker build -t yafred/asn1-playground:${{env.VERSION}} .
       -
         name: Login to DockerHub
         uses: docker/login-action@v1 
@@ -46,5 +46,7 @@ jobs:
       -
         name: Push
         run: |
-          docker push yafred/asn1-playground:test
+          docker tag yafred/asn1-playground:${{env.VERSION}} yafred/asn1-playground:latest
+          docker push yafred/asn1-playground:${{env.VERSION}}
+          docker push yafred/asn1-playground:latest
  

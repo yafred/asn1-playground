@@ -4,7 +4,7 @@
 # Build docker image using non released asn1-tool
 #
 
-echo "JAVA_HOME=/usr/local/openjdk-8" > .env
+echo "JAVA_HOME=/usr/lib/jvm/default-java/" > .env
 echo "WORKING_DIR=/tmp" >> .env
 echo "ASN1_COMPILER_JAR=/usr/src/app/asn1-compiler-with-google-java-format.jar" >> .env
 echo "ASN1_CONVERTER_JAR=/usr/src/app/asn1-converter.jar" >> .env

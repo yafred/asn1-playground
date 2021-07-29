@@ -1,12 +1,5 @@
 
-FROM node:12
-
-#
-# Install Java
-#
-RUN apt-get update && \
-    apt-get install -y default-jdk && \
-	java -version
+FROM timbru31/java-node:11-jdk
 
 #
 # Add our application

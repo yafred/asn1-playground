@@ -1,20 +1,22 @@
 
-name: ci
+name: release
 
+# on events
 on:
   push:
-    branches:
-      - 'master'
+    tags:
+      - 'v*.*.*'
 
 jobs:
   docker:
     runs-on: ubuntu-latest
-    env:
-      VERSION: v0.0.28
     steps:
       - 
         name: Checkout the repository
         uses: actions/checkout@v2
+      - 
+        name: Set env
+        run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - 
         name: Get artifacts
         run: |

@@ -34,7 +34,7 @@ jobs:
       - 
         name: Create .env 
         run: |
-          pwd
+          cd downloads
           echo "JAVA_HOME=/usr/lib/jvm/default-java/" > .env
           echo "WORKING_DIR=/tmp" >> .env
           echo "ASN1_COMPILER_JAR=/usr/src/app/asn1-compiler-with-google-java-format.jar" >> .env

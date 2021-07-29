@@ -25,9 +25,11 @@ jobs:
       - 
         name: Get artifacts
         run: |
+          pwd
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-compiler-with-google-java-format.jar
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-converter.jar
           wget https://github.com/yafred/asn1-tool/releases/download/v0.0.28/asn1-runtime.jar
+          ls -l
       - 
         name: Create .env 
         run: |

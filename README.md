@@ -20,7 +20,7 @@ docker run -p 3000:3000 yafred/asn1-playground
   * Install a Java 11+ JDK (we need java and javac)
   * Download the jars from [latest asn1-tool release](https://github.com/yafred/asn1-tool/releases) 
   * Clone this repository
-  * Create a .env file and set following properties
+  * Create a .env file at the root of the repository and set following properties
   
 ```
 JAVA_HOME=< where your Java JDK is installed>

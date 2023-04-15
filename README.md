@@ -2,7 +2,7 @@
 
 Web front-end (Node.js) and docker image to play with https://github.com/yafred/asn1-tool
 
-[![Build Status](https://travis-ci.org/yafred/asn1-playground.svg?branch=master)](https://travis-ci.org/yafred/asn1-playground)
+[![Build Status](https://github.com/yafred/asn1-playground/workflows/test/badge.svg)](https://github.com/yafred/asn1-playground/actions?query=workflow%3A%22test%22)
 
 
 ## Using the docker image
